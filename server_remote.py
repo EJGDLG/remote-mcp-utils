@@ -2,6 +2,8 @@
 # Servidor MCP remoto por HTTP (JSON-RPC 2.0)
 from fastapi import FastAPI, Request
 from modulos.rsa import generar_llaves, encriptar, desencriptar
+from maps_module import build_dualmap
+
 # Si luego agregas mapas:
 # from modulos.maps_module import build_dualmap
 

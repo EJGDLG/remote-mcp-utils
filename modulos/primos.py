@@ -1,15 +1,18 @@
+# modulos/primos.py
+
 import random
 
-def generar_primo(rango_inferior, rango_superior):
-    def es_primo(num):
-        if num < 2:
+def es_primo(n: int) -> bool:
+    if n < 2:
+        return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
             return False
-        for i in range(2, int(num**0.5) + 1):
-            if num % i == 0:
-                return False
-        return True
+    return True
 
-    primos = [n for n in range(rango_inferior, rango_superior + 1) if es_primo(n)]
-    if not primos:
-        return None  # No hay primos en el rango
-    return random.choice(primos)
+def generar_primo(min_val: int, max_val: int) -> int:
+    """Genera un número primo aleatorio entre min_val y max_val"""
+    while True:
+        candidato = random.randint(min_val, max_val)
+        if es_primo(candidato):
+            return candidato
