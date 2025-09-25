@@ -87,15 +87,26 @@ async def rpc(request: Request):
     if method == "tools/call":
         # Puede venir en dos formatos:
         # 1. params = { "name": "...", "arguments": { ... } }
-        # 2. params = { ... } directamente (plano)
+        # 2. params = { ... } directamente (plano, sin "name")
         if "name" in params:
             name = params.get("name")
             args = params.get("arguments", {}) or {}
         else:
-            # Si no trae 'name', asumimos que todo params son los argumentos
-            # y deducimos la tool por convención o error controlado
-            name = params.get("tool", None)  # opcional si decides meterlo
-            args = params
+            #  Ajuste: deducimos la tool según las claves recibidas
+            if "rango_inferior" in params and "rango_superior" in params:
+                name = "rsa/generate_keys"
+                args = params
+            elif {"mensaje", "e", "n"}.issubset(params.keys()):
+                name = "rsa/encrypt"
+                args = params
+            elif {"mensaje_cifrado", "d", "n"}.issubset(params.keys()):
+                name = "rsa/decrypt"
+                args = params
+            elif {"lake", "period_a", "period_b"}.issubset(params.keys()):
+                name = "maps/dualmap"
+                args = params
+            else:
+                return err(mid, -32601, "No se pudo deducir la herramienta a partir de los parámetros")
 
         try:
             if name == "rsa/generate_keys":
@@ -129,6 +140,7 @@ async def rpc(request: Request):
 
         except Exception as e:
             return err(mid, -32000, f"Error ejecutando {name}: {str(e)}")
+
 
 
     return err(mid, -32601, f"Method not found: {method}")
