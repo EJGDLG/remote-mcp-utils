@@ -1,15 +1,17 @@
 # maps_module.py
 import folium
 from folium.plugins import DualMap
-import os
+from pathlib import Path
 
-# Rutas a tus archivos geojson
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Carpeta base del proyecto (un nivel arriba de este archivo)
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR / "data"
+
+# Rutas a tus archivos geojson dentro de /data
 GEOJSON_FILES = {
-    "Atitlan": os.path.join(BASE_DIR, "Lago_Atitlan.geojson"),
-    "Amatitlan": os.path.join(BASE_DIR, "Lago_Amatitlan.geojson")
+    "Atitlan": DATA_DIR / "Lago_Atitlan.geojson",
+    "Amatitlan": DATA_DIR / "Lago_Amatitlan.geojson"
 }
-
 
 def build_dualmap(lake: str, period_a: str, period_b: str):
     """
@@ -22,20 +24,22 @@ def build_dualmap(lake: str, period_a: str, period_b: str):
         raise ValueError(f"Lago no soportado: {lake}")
 
     geojson_file = GEOJSON_FILES[lake]
+    if not geojson_file.exists():
+        raise FileNotFoundError(f"No se encontró el archivo GeoJSON: {geojson_file}")
 
-    # Crear un DualMap
+    # Crear un DualMap centrado en Guatemala
     m = DualMap(location=[14.6, -90.7], zoom_start=10)
 
     # Capa izquierda (periodo A)
     folium.GeoJson(
-        geojson_file,
+        str(geojson_file),
         name=f"{lake} - {period_a}",
         tooltip=f"{lake} - {period_a}"
     ).add_to(m.m1)
 
     # Capa derecha (periodo B)
     folium.GeoJson(
-        geojson_file,
+        str(geojson_file),
         name=f"{lake} - {period_b}",
         tooltip=f"{lake} - {period_b}"
     ).add_to(m.m2)
@@ -43,8 +47,8 @@ def build_dualmap(lake: str, period_a: str, period_b: str):
     folium.LayerControl().add_to(m.m1)
     folium.LayerControl().add_to(m.m2)
 
-    # Guardar salida en archivo HTML
-    out_file = os.path.join(BASE_DIR, f"dualmap_{lake.lower()}_{period_a}_{period_b}.html")
-    m.save(out_file)
+    # Guardar salida en archivo HTML dentro de /data
+    out_file = DATA_DIR / f"dualmap_{lake.lower()}_{period_a}_{period_b}.html"
+    m.save(str(out_file))
 
-    return m, out_file
+    return m, str(out_file)

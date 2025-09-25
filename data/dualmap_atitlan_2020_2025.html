@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_82aae4585fea74bc70b90e0d303e0d45 {
+                    position: absolute;
+                    width: 50.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_448444df573a2c378e7541c9a54c6fa1 {
+                    position: absolute;
+                    width: 50.0%;
+                    height: 100.0%;
+                    left: 50.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/jieter/Leaflet.Sync/L.Map.Sync.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_82aae4585fea74bc70b90e0d303e0d45" ></div>
+        
+    
+            <div class="folium-map" id="map_448444df573a2c378e7541c9a54c6fa1" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_82aae4585fea74bc70b90e0d303e0d45 = L.map(
+                "map_82aae4585fea74bc70b90e0d303e0d45",
+                {
+                    center: [14.6, -90.7],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_40ff98940c9bd7f537c0519854eab52f = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_40ff98940c9bd7f537c0519854eab52f.addTo(map_82aae4585fea74bc70b90e0d303e0d45);
+        
+    
+
+        function geo_json_feb2f44b8f9f740a61df0a01eb4b9808_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_feb2f44b8f9f740a61df0a01eb4b9808 = L.geoJson(null, {
+                onEachFeature: geo_json_feb2f44b8f9f740a61df0a01eb4b9808_onEachFeature,
+            
+            ...{
+}
+        });
+
+        function geo_json_feb2f44b8f9f740a61df0a01eb4b9808_add (data) {
+            geo_json_feb2f44b8f9f740a61df0a01eb4b9808
+                .addData(data);
+        }
+            geo_json_feb2f44b8f9f740a61df0a01eb4b9808_add({"crs": {"properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}, "type": "name"}, "features": [{"geometry": {"coordinates": [[[-91.07151, 14.5948], [-91.07151, 14.750979], [-91.326256, 14.750979], [-91.326256, 14.5948], [-91.07151, 14.5948]]], "type": "Polygon"}, "properties": {"name": "Lago Atitl\u00c3\u00a1n"}, "type": "Feature"}], "name": "Lago_Atitlan", "type": "FeatureCollection"});
+        geo_json_feb2f44b8f9f740a61df0a01eb4b9808.setStyle(function(feature) {return feature.properties.style;});
+
+        
+    
+            geo_json_feb2f44b8f9f740a61df0a01eb4b9808.bindTooltip(
+                `<div>
+                     Atitlan - 2020
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            geo_json_feb2f44b8f9f740a61df0a01eb4b9808.addTo(map_82aae4585fea74bc70b90e0d303e0d45);
+        
+    
+            var layer_control_7a30617150407807724e8bf7fcd9a2ba_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_40ff98940c9bd7f537c0519854eab52f,
+                },
+                overlays :  {
+                    "Atitlan - 2020" : geo_json_feb2f44b8f9f740a61df0a01eb4b9808,
+                },
+            };
+            let layer_control_7a30617150407807724e8bf7fcd9a2ba = L.control.layers(
+                layer_control_7a30617150407807724e8bf7fcd9a2ba_layers.base_layers,
+                layer_control_7a30617150407807724e8bf7fcd9a2ba_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_82aae4585fea74bc70b90e0d303e0d45);
+
+        
+    
+            var map_448444df573a2c378e7541c9a54c6fa1 = L.map(
+                "map_448444df573a2c378e7541c9a54c6fa1",
+                {
+                    center: [14.6, -90.7],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7ae5f74fc13a1fc75e86bac2b107c1e7 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7ae5f74fc13a1fc75e86bac2b107c1e7.addTo(map_448444df573a2c378e7541c9a54c6fa1);
+        
+    
+
+        function geo_json_53348d815e0660dd29135d2250ca603a_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_53348d815e0660dd29135d2250ca603a = L.geoJson(null, {
+                onEachFeature: geo_json_53348d815e0660dd29135d2250ca603a_onEachFeature,
+            
+            ...{
+}
+        });
+
+        function geo_json_53348d815e0660dd29135d2250ca603a_add (data) {
+            geo_json_53348d815e0660dd29135d2250ca603a
+                .addData(data);
+        }
+            geo_json_53348d815e0660dd29135d2250ca603a_add({"crs": {"properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}, "type": "name"}, "features": [{"geometry": {"coordinates": [[[-91.07151, 14.5948], [-91.07151, 14.750979], [-91.326256, 14.750979], [-91.326256, 14.5948], [-91.07151, 14.5948]]], "type": "Polygon"}, "properties": {"name": "Lago Atitl\u00c3\u00a1n"}, "type": "Feature"}], "name": "Lago_Atitlan", "type": "FeatureCollection"});
+        geo_json_53348d815e0660dd29135d2250ca603a.setStyle(function(feature) {return feature.properties.style;});
+
+        
+    
+            geo_json_53348d815e0660dd29135d2250ca603a.bindTooltip(
+                `<div>
+                     Atitlan - 2025
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            geo_json_53348d815e0660dd29135d2250ca603a.addTo(map_448444df573a2c378e7541c9a54c6fa1);
+        
+    
+            var layer_control_1beefd732f603c3885f4f2235de97e52_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_7ae5f74fc13a1fc75e86bac2b107c1e7,
+                },
+                overlays :  {
+                    "Atitlan - 2025" : geo_json_53348d815e0660dd29135d2250ca603a,
+                },
+            };
+            let layer_control_1beefd732f603c3885f4f2235de97e52 = L.control.layers(
+                layer_control_1beefd732f603c3885f4f2235de97e52_layers.base_layers,
+                layer_control_1beefd732f603c3885f4f2235de97e52_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_448444df573a2c378e7541c9a54c6fa1);
+
+        
+    
+            map_82aae4585fea74bc70b90e0d303e0d45.sync(map_448444df573a2c378e7541c9a54c6fa1);
+            map_448444df573a2c378e7541c9a54c6fa1.sync(map_82aae4585fea74bc70b90e0d303e0d45);
+        
+</script>
+</html>
