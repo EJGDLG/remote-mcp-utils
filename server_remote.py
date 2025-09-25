@@ -85,8 +85,17 @@ async def rpc(request: Request):
         return ok(mid, {"tools": TOOLS})
 
     if method == "tools/call":
-        name = params.get("name")
-        args = params.get("arguments", {}) or {}
+        # Puede venir en dos formatos:
+        # 1. params = { "name": "...", "arguments": { ... } }
+        # 2. params = { ... } directamente (plano)
+        if "name" in params:
+            name = params.get("name")
+            args = params.get("arguments", {}) or {}
+        else:
+            # Si no trae 'name', asumimos que todo params son los argumentos
+            # y deducimos la tool por convención o error controlado
+            name = params.get("tool", None)  # opcional si decides meterlo
+            args = params
 
         try:
             if name == "rsa/generate_keys":
@@ -109,17 +118,17 @@ async def rpc(request: Request):
                 descifrado = desencriptar(c, (d, n))
                 return ok(mid, {"content": [{"type": "json", "data": {"plain": descifrado}}]})
 
-            # Ejemplo para DualMap:
             if name == "maps/dualmap":
-                 lake = args.get("lake")
-                 pa = args.get("period_a")
-                 pb = args.get("period_b")
-                 _, html_out = build_dualmap(lake, pa, pb)
-                 return ok(mid, {"content": [{"type": "text", "text": f"Mapa generado: {html_out}"}]})
+                lake = args.get("lake")
+                pa = args.get("period_a")
+                pb = args.get("period_b")
+                _, html_out = build_dualmap(lake, pa, pb)
+                return ok(mid, {"content": [{"type": "text", "text": f"Mapa generado: {html_out}"}]})
 
             return err(mid, -32601, f"Unknown tool: {name}")
 
         except Exception as e:
             return err(mid, -32000, f"Error ejecutando {name}: {str(e)}")
+
 
     return err(mid, -32601, f"Method not found: {method}")
