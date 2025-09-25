@@ -1,9 +1,9 @@
 # server_remote.py
 # Servidor MCP remoto por HTTP (JSON-RPC 2.0)
 from fastapi import FastAPI, Request
-from rsa import generar_llaves, encriptar, desencriptar
-# Si luego quieres usar DualMap, importa lo necesario:
-# from maps_module import build_dualmap  
+from modulos.rsa import generar_llaves, encriptar, desencriptar
+# Si luego agregas mapas:
+# from modulos.maps_module import build_dualmap
 
 app = FastAPI()
 

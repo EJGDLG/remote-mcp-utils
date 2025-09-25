@@ -3,8 +3,8 @@
 # -------------------------------
 import random
 from primos import generar_primo
-from mcd import mcd
-from inverso_modular import inverso_modular
+from modulos.mcd import mcd
+from modulos.inverso_modular import inverso_modular
 
 def generar_llaves(rango_inferior, rango_superior):
     p = generar_primo(rango_inferior, rango_superior)
